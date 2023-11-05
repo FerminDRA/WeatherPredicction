@@ -17,8 +17,8 @@ jobs:
       run: pip install -r requirements.txt
     - name: download dataset
       run: wget -O data/weatherHistory.csv ${{github.event.client_payload.dataseturl}}
-    - name: cat dataset
-      run: cat data/weatherHistory.csv
+    #- name: cat dataset
+    #  run: cat data/weatherHistory.csv
     - name: train model
       run: python model/train.py
     - name: docker build
