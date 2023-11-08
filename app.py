@@ -28,11 +28,11 @@ class InputData(BaseModel):
     Pressure:float=1015.1
 
 class OutputData(BaseModel):
-    score:float=9.472222222222221
+    Temperature:float=9.472222222222221
 
-@app.post('/score', response_model = OutputData)
+@app.post('/prediction', response_model = OutputData)
 def score(data:InputData):
     model_input = np.array([v for k,v in data.dict().items()]).reshape(1,-1)
     result = model.predict(model_input)
 
-    return {'score':result}
+    return {'Temperature':result}
